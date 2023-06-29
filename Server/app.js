@@ -4,7 +4,12 @@ const errorMiddleware = require("./middleware/error");
 var cors = require('cors') 
 
 const app = express();
-app.use(cors())
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'PUT', 'POST' , 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(cookieParser());
